@@ -1,0 +1,366 @@
+@use 'partials/colors';
+@use 'partials/mixins';
+@use 'partials/globals';
+
+.header {
+    color: colors.$primary-white;
+    position: relative;
+    display: flex;
+    height: 70vh;
+    min-height: 20rem;
+    justify-content: center;
+    align-items: center;
+    
+    &__video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 70vh;
+        min-height: 20rem;
+        object-fit: cover;
+        z-index: -1;
+
+    }
+
+    &__home-anchor {
+        position: absolute;
+        left: 1.25rem;
+        top: 1.25rem;
+        font-size: 1.5rem;
+        color: colors.$primary-white;
+    }
+
+    &__heading {
+        margin: 0 1rem;
+        text-align: center;
+        font-size: 2.5rem;
+        @include mixins.tablet {
+            font-size: 5rem;
+        }
+    }
+
+    &__search-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__search {
+        width: 90%;
+        box-sizing: border-box;
+        margin: 1.5rem auto 0 auto;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border: 1px solid colors.$primary-dark;
+        padding: 0.5rem;
+        outline: none;
+        text-align: center;
+
+        @include mixins.tablet {
+            flex: 2;
+            padding: 0.75rem;
+            width: 38vw;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            text-align: left;
+        }
+    }
+
+    &__submit-btn {
+        width: 90%;
+        box-sizing: border-box;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border: 1px solid colors.$primary-dark;
+        outline: none;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem auto 0 auto;
+        background-color: #555;
+        color: colors.$primary-white;
+
+        @include mixins.tablet {
+            width: auto;
+            margin: 1.5rem auto 0 auto;
+            padding: 0.75rem 2rem;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: -1px;
+        }
+    
+        &:hover {
+            background-color: colors.$button-hover;
+        }
+
+        &:active {
+            background-color: colors.$button-focus;
+        }
+    }
+
+    &__form {
+        position: relative;
+    }
+    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    &__error {
+        position: absolute;
+        bottom: -7rem;
+        width: 60%;
+        margin-left: 10%;
+        background-color: white;
+        color: black;
+        padding: 1rem;
+        box-sizing: border-box;
+        border-radius: .5rem;
+        opacity: 0;
+        transition: all .4s;
+    
+        &--fade-in {
+            opacity: 1;
+        }
+    }
+}
+
+.footer {
+    padding-top: 2rem;
+    background-color: colors.$primary-dark;
+    color: colors.$primary-white;
+
+    &__container {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+
+    &__column {
+        margin-bottom: 2rem;
+        &--narrow {
+            @include mixins.tablet {
+                width: 30%;
+            }
+        }
+    }
+
+    &__icon {
+        font-size: 5rem;
+        margin-top: 1rem;
+        color: colors.$primary-accent;
+    }
+
+    &__header {
+        margin: 0;
+    }
+
+    &__subheading {
+        margin-bottom: 0.5rem;
+    }
+
+    &__details {
+        margin: 0;
+    }
+
+    &__links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        margin-bottom: 0.75rem;
+    }
+
+    &__link-icon {
+        color: colors.$primary-accent;
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+    }
+
+    &__social {
+        color: colors.$primary-white;
+        font-size: 1rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+                                
+        &:hover {
+            color: colors.$primary-accent;
+        }
+    }
+
+    &__copy {
+        border-top: 1px solid colors.$primary-accent;
+        padding: 2rem 0;
+        font-size: 0.75rem;
+        @include mixins.tablet {
+            text-align: center;
+        }
+    }
+}
+.main {
+    &__title {
+        text-align: center;
+        margin: 1.5rem 0 2rem 0;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+}
+.genres {
+    width: 90%;
+    margin: 0 auto;
+
+    &__cards {
+        width: 100%;
+        height: 53vw;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__card {
+        width: 30%;
+        height: 15vw;
+        position: relative;
+    }
+    &__image {
+        width: 100%;
+        height: 15vw;
+
+        position: relative;
+        
+    }
+    &__title-container {
+        width: 100%;
+        height: 15vw;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        z-index: 2;
+        perspective: 3000px;
+        transform-style: preserve-3d;
+        transition: all .4s;
+        // transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px);
+
+        &--slide {
+            // transform: rotateX(70deg) rotateZ(-60deg) translate3d(-120px, 0px, 70px);
+            transform: rotateX(70deg) rotateZ(-60deg) translate3d(-120px, 0px, 70px);
+            // transform: rotateX(40deg) rotateZ(-50deg) translate3d(-90px, 0px, 70px);
+            box-shadow: -80px 60px 15px 5px rgba(0,0,0,0.4);
+            transform-style: preserve-3d;
+            transition: all .4s;
+        }
+    }
+    &__title {
+        position: absolute;
+        top: .5rem;
+        left: .5rem;
+        color: white;
+        background-color: rgba(0,0,0,0.3);
+        padding: .25rem .5rem;
+    }
+    &__display-movies {
+        position: relative;
+        top: 10vw;
+        left: 18vw;
+    }
+}
+
+.posters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+
+    &__poster-container {
+        width: 30%;
+        height: 35vw;
+        // padding: 3rem 0 0 0;
+        margin-bottom: 2vw;
+        // position: relative;
+        box-sizing: border-box;
+    }
+    &__plot {
+        font-size: 1.25rem;
+    }
+    &__label {
+        margin: 1rem 1.5rem 0 1.5rem;
+        font-weight: 700;
+    }
+    &__value {
+        margin: .15rem 1.5rem 0 2.5rem;
+    }
+    &__box-office{
+        margin: 1rem 1.5rem 0 1.5rem;
+    }
+    &__rating{
+        margin: 1rem 1.5rem 0 1.5rem;
+    }
+    &__poster {
+        height: 100%;
+        width: 100%;
+    }
+}
+.posters__poster-container {
+    background-color: transparent;
+    // width: 300px;
+    // height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .posters__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .posters__poster-container:hover .posters__card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .posters__card-back {
+      padding: 1rem;
+      box-sizing: border-box;
+  }
+  
+  /* Position the front and back side */
+  .posters__card-front, .posters__card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .posters__card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .posters__card-back {
+    background-color: #777;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .fa-ticket {
+      cursor: pointer;
+  }
